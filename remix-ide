@@ -1,0 +1,16 @@
+* A Streamgardener's Progress
+
+
+
+
+Remix-IDE
+
+    Installation
+    
+   *not* an easy task; more difficult if you are newish to world of nodejs
+   
+   many errors and failed attempts using ubuntu 18.04...; will try again after [cross fingers here]  success with :
+    
+    ubuntu 16.04 server + lightdm , nodej10.6/npm6.13, 
+    
+    git clone remix-ide 
