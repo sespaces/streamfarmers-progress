@@ -1,0 +1,80 @@
+These are steps for installing Remix-IDE on a fresh Ubuntu-18.10 installation.
+
+# commands will be run either by "root" or "remix"
+sudo su
+
+# already have curl git and wget
+apt install -y python build-essential
+
+# add the "remix" user, with a password
+adduser remix 
+
+# create preferred shared-folder location, instead of "/app"
+mkdir /srv/remix
+# remix has to have right to write to shared folder; just as soon do:
+chown remix:remix /srv/remix
+
+# switch from "root" to "remix" via myself
+exit
+# after login, working directory is /home/remix
+sudo login remix
+
+# for re-use, I added these to /home/remix/.bashrc;
+export REMIXD_COMMIT=eb3d850b06eb05611c97a8b58abc8f940c8e02ce
+export REMIX_VERSION=0.9.2
+export NVM_VERSION=0.34.0
+export NPM_VERSION=10.15.3
+
+
+curl -o- "https://raw.githubusercontent.com/creationix/nvm/v$NVM_VERSION/install.sh" | bash 
+
+export NVM_DIR="$HOME/.nvm" 
+   
+[ -s "$NVM_DIR/nvm.sh" ] . "$NVM_DIR/nvm.sh" 
+   
+[ -s "$NVM_DIR/bash_completion" ] . "$NVM_DIR/bash_completion" 
+   
+nvm install $NPM_VERSION 
+
+npm install remix-ide@$REMIX_VERSION -g 
+
+sed -i s/"remixd.git"/"remixd.git#$REMIXD_COMMIT"/g $HOME/.nvm/versions/node/v$NPM_VERSION/lib/node_modules/remix-ide/package.json 
+
+cd $HOME/.nvm/versions/node/v$NPM_VERSION/lib/node_modules/remix-ide 
+
+rm -rf node_modules 
+
+npm install
+
+## Lots of warnings, some "critical" but apparently as security not functionally
+
+
+sed -i s/", loopback"//g $HOME/.nvm/versions/node/v$NPM_VERSION/lib/node_modules/remix-ide/node_modules/remixd/src/websocket.js
+
+sed -i s/127.0.0.1/0.0.0.0/g $HOME/.nvm/versions/node/v$NPM_VERSION/lib/node_modules/remix-ide/bin/remix-ide
+
+## going to leave these alone for now
+#EXPOSE 8080
+#EXPOSE 65520
+#ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+
+# "entry point" file is roughly as follows; main difference is that
+# original file had "/app" as the shared-folder ["/srv/remix"] 
+#
+
+# set up environment
+export NVM_DIR="$HOME/.nvm"
+
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+nvm use $NPM_VERSION
+
+
+# serve remix-ide
+$HOME/.nvm/versions/node/v$NPM_VERSION/lib/node_modules/remix-ide/bin/remix-ide /srv/remix
+
+# it worked!!!
+
+# I can even access from other machines on the network!
