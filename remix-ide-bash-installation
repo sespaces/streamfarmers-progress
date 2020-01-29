@@ -1,4 +1,8 @@
-These are steps for installing Remix-IDE on a fresh Ubuntu-18.10 installation.
+# These are steps for installing Remix-IDE on a fresh Ubuntu-18.10 installation.
+
+# Based on:
+# https://www.github.com/4c0n/remix-ide-docker
+
 
 # commands will be run either by "root" or "remix"
 sudo su
