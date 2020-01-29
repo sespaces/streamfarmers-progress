@@ -145,6 +145,8 @@ The original docker file is at:
 
 I went through the steps, altering for executing on system through shell.
 
+[Installing Remix-IDE](./remix-ide-bash-installation)
+
 This time I made it all the through; and gosh I feel like a big boy. 
 
 ```
