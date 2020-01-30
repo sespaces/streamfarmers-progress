@@ -149,8 +149,118 @@ I went through the steps, altering for executing on system through shell.
 
 This time I made it all the through; and gosh I feel like a big boy. 
 
-```
+- 2:30pm (how now)
+
+I went to push these notes and instructions to github but I haven't yet uploaded a key from this machine.
+
+I am pretty sure you have to do that through browsing their site.
+
+Doh. and also, make sure you didn't clone your repo originally using "https://"; otherwise github thinks you think you are special; 
+$ git remote set-url origin "git@github.com:my-id/my-repo.git"
+
+4:45pm (solver.fvill.com:443)
+
+As happy as I am to have remix serving on :8080, I need it accessible via https; and if I can't set it to use my public key, it needs at least to have a username:password access method
+
+I expect to run the remix server on http behind apache on https
+
+Once I get the proxy business worked out, I'll add password authentication, then the SSL layer with letsencrypt certificates
+
+5:00pm (limit ssh access to public key only)
+
+yikes! sshd is still open to passwords and even though it faces public on non-standard port, this ain't good
+
+  $ sudo sed  -i s/"PasswordAuthentication yes"/"PasswordAuthentication no"/g /etc/ssh/sshd_config
+
+  $ sudo service sshd reload
+
+  $ sudo ssh -p 22222 dhm@solver.fvill.com
+
+    dhm@solver.fvill.com: Permission denied (publickey).
+
+5:10pm (now, about that proxy)
+
+make sure it isn't running since I think it isn't installed
+
+  $ sudo service apache2 status
+
+  $ sudo apt install -y apache2 apache2-utils apache2-doc
+
+  $ sudo reboot now
+
+doh! can't ssh in...
+
+  log in to physical remix-ide server box
+
+  open sshd to password auth
+
+  get back on two other network machines and ssh-copy-id's more better than before...
+
+  shut sshd to password auth
+
+  logging in with public key from both machines, locally and round-tripping the internet
+
+5:50pm (now about that proxy, er, that remix.service)
+
+Apache2 is serving at localhost
+
+I will pause configuring a site because it seems more essential to get the remix-ide server running as a service that starts at machine boot
+
+First, add a node process manager:
+  # as user "remix"
+  $ npm install pm2@latest -g
+
+Next, learn that our remix-ide can be started with a straight "remix-ide" and it goes to right folder and port.
+
+Crank it up with process manager:
+
+  $ pm2 start remix-ide
+
+  output says it's online, and it is
 
 
+Add it to machine's init file? And does it need to be started by user "remix"?
 
-```
+9:00pm
+
+well, I'm kind of stuck again
+
+having difficulty getting service to start because the environment is a bit tricky; I can install and run as user remix but not get the startup automated; I cannot avoid that challenge by installing as user "root" using the same method
+
+good night
+
+- 6:45am (trek on, little buddy)
+
+Having the appearance of my terminal windows reflect the session's connection and user role. I am using Gnome Terminal and have six "profiles" I use to distinguish normal and root user across three machines. All profiles have the same column and row counts and font size. Each machine has an easily distinguishable color pallette. The "root" profile for each has a more intense background color, bold font, and changed cursor shape.
+
+I had hoped to find and share some configuration file information, but the last 15 minutes taught me that gnome-terminal, along with other gnomey stuff, has a binary registry file that can be accessed via "dconf-editor" (or not?; I installed it and had no luck there either). Harumpf; not very typical.
+
+time to move on
+
+- 7:30am
+
+Situation review:
+
+  seems I need to understand more about node...
+
+  goal: serve remix-ide at https://solver.fvill.com
+
+  steps: 
+
+    fresh install doing everything as root
+
+    or
+
+    write script that launches it properly and can be called at system initialization; not as root
+
+  seems I have some bash scripting education on the plate
+
+
+  goal-step-1: use a script to launch remix
+
+  goal-step-2: cause the script to be run at reboot
+
+  goal-step-3: serve remix through mod_proxy
+
+  goal-step-4: serve remix via https
+
