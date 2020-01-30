@@ -10,18 +10,18 @@ sudo su
 # already have curl git and wget
 apt install -y python build-essential
 
-# add the "remix" user, with a password
-adduser remix 
+# create remix user with login limited to "sudo su remix"
+adduser remix --disable-login
 
 # create preferred shared-folder location, instead of "/app"
 mkdir /srv/remix
+
 # remix has to have right to write to shared folder; just as soon do:
 chown remix:remix /srv/remix
 
-# switch from "root" to "remix" via myself
-exit
-# after login, working directory is /home/remix
-sudo login remix
+# switch to user "remix" and work in that home directory
+su remix
+cd /home/remix
 
 # for re-use, I added these to /home/remix/.bashrc;
 export REMIXD_COMMIT=eb3d850b06eb05611c97a8b58abc8f940c8e02ce

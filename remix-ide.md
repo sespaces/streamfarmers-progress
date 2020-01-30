@@ -264,3 +264,23 @@ Situation review:
 
   goal-step-4: serve remix via https
 
+
+10:30am (launched from root)
+
+see [bash-scripting](./bash-scripting.md)
+
+Step 1 -- Done 
+
+  root now launches remix-ide via pm2
+
+  underlying problem had been that I gave user remix a password and ability to login; proper method is `$ sudo adduser --disable-login remix`; resolution is `$ sudo usermod --expiredate 1 remix` which causes their password to expire
+
+  this limits access to account to "sudo su remix"
+
+  additionally, the PATH env variable needs to include the bin directory with all the components; I added it to root's .bashrc
+
+    `$ sudo echo "export PATH=/home/remix/.nvm/versions/node/v10.15.3/bin:$PATH" >> ~/.bashrc`
+
+- 10:45am
+
+Step 2 
