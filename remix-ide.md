@@ -284,3 +284,102 @@ Step 1 -- Done
 - 10:45am
 
 Step 2 
+
+  rather than init.d directly, I will try to set this up using pm2's startup facility
+
+  and success:
+
+  # carry this out as root
+  $ sudo su
+
+  # if not running already, start it up
+  $ pm2 start remix-ide
+
+  # create service to start on reboot; "systemd" is for Ubuntu
+  $ pm2 startup systemd
+
+rebooted and it started; hoot-hoot!
+
+the name of the service is by default named pm2-<user>.service and is located in the /etc/systemd/system/ directory
+
+
+- 11:30am ( proxy time )
+
+Step 3
+
+I have found this [node-apache-proxy](https://www.cloudbooklet.com/setup-node-js-with-apache-proxy-on-ubuntu-18-04-for-production/) article helpful:
+
+a2dissite 000-default
+
+a2enmod proxy proxy_http rewrite headers expires
+
+nano /etc/apache2/sites-available/solver-fvill.conf
+
+  <VirtualHost *:80>
+      ServerName solver.fvill.com
+      ServerAlias remix.fvill.com 
+
+      ProxyRequests Off
+      ProxyPreserveHost On
+      ProxyVia Full
+
+      <Proxy *>
+          Require all granted
+      </Proxy>
+
+      ProxyPass / http://127.0.0.1:8080/
+      ProxyPassReverse / http://127.0.0.1:8080/
+  </VirtualHost>
+
+a2ensite solver-fvill
+
+systemctl restart apache2
+
+DONE!
+
+That's one chicken dinner and another one in the cooler!
+
+  0:2108   dhm-laptop:dhm   ~/current/progress   10:49 AM 
+  $ curl sol | grep title
+
+
+"curl sol" is equivalent to "curl http://solver.fvill.com" (I didn't use that, however, because I do not have an http port open to the world.
+
+above command was run from a different machine on network using standard port 80; the output was as desired:
+
+  <title>Remix - Ethereum IDE</title>
+
+12:20 (EFF! EFF! EFF!)
+
+May great fortune go the Electronic Freedom Foundation.
+
+Because "Let's Encrypt"
+
+# get certbot
+
+# add repository
+add-apt-repository ppa:certbot/certbot
+apt update
+
+# install for apache, with docs
+apt install -y python-certbot-apache python-certbot-apache-doc
+
+# run certbot; it will generate and install certs and update .conf files
+certbot --apache -m dhmorgan@protonmail.com -d solver.fvill.com -d remix.fvill.com
+
+before running above, don't forget to open port 80 and have dns pointing to your IP
+
+... so that last bunch took just a little bit of time, 
+
+but then there was a snafu: if adding apache2 directive "AliasName", only use that in the non-ssl conf file; having more than one name in a virtual host config section causes ssl error
+
+- 1:30pm  
+
+Alright, then!
+
+a single remix-ide is now available at [remix.fvill.com](https://remix.fvill.com) and [solver.fvill.com](https://solver.fvill.com)
+
+There's a little message from web3 that pops up with something to say about mixing https and http but it goes away too quickly to read.
+
+Makes me want to hurry up and add user authentication.
+
