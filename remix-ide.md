@@ -383,3 +383,32 @@ There's a little message from web3 that pops up with something to say about mixi
 
 Makes me want to hurry up and add user authentication.
 
+
+
+What I'd like to get to is public key authorization, but will settle for password for now...
+
+# create a user/password; store it haphazardly for now
+$ htpasswd -c /var/www/apache2-passwords dhm
+
+
+# edit the site's configuration file, adding within <VirtualHost> directive:
+
+<Location /> 
+
+    Deny from all
+    Allow from 76.72.24.161
+    Satisfy Any 
+    AuthType Basic
+    AuthName "Remix, Solidity, Solver"
+    AuthBasicProvider file
+    AuthUserFile "/var/www/apache2-passwords"
+    Require user dhm
+
+</Location>
+
+
+- 3:20pm 
+
+that gets us to a password requirement, but then an internal server error after submitting
+
+gotta go
