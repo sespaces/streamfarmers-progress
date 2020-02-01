@@ -181,7 +181,7 @@ make sure it isn't running since I think it isn't installed
 
   $ sudo service apache2 status
 
-  $ sudo apt install -y apache2 apache2-utils apache2-doc
+  $ sudo apt install -y apache2 apache2-doc
 
   $ sudo reboot now
 

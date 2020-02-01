@@ -1,8 +1,8 @@
-# Remix-IDE Installation -- Ubuntu 18.04 Server and Apache2
+# Remix-IDE Installation -- Ubuntu 18.04 minimal
 
+These steps are roughly equivalent to those in the Docker image build file created by "4c0n" and available at https://www.github.com/4c0n/remix-ide-docker. 
 
-
-Fresh install of Ubuntu 18.04 Mini
+This installation is on a fresh install of Ubuntu 18.04 mini. It also works on Ubuntu 18.10 servers.
 
 Add necessary packages:
 
@@ -77,3 +77,5 @@ Crank it up:
 	$ $HOME/.nvm/versions/node/v$NPM_VERSION/lib/node_modules/remix-ide/bin/remix-ide /srv/remix
 
 Smile.
+
+Next up is [controlling remix-ide as a system service using "pm2"](./remix-ide-installation-pm2-startup-service.md).
