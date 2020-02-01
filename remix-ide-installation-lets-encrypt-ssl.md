@@ -1,7 +1,7 @@
 # Remix-IDE Installation -- Add SSL via Certbot (Let's Encrypt) 
 
 
-This how-to continues from [proxy serve remix-ide](./remix-ide-apache2-proxy.md).
+This how-to continues from [proxy serve remix-ide](./remix-ide-installation-apache2-proxy.md).
 
 
 Get certbot with built-in apache2 support.
