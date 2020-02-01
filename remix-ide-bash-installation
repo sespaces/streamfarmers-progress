@@ -11,7 +11,7 @@ sudo su
 apt install -y python build-essential
 
 # create remix user with login limited to "sudo su remix"
-adduser remix --disable-login
+adduser remix --disabled-login
 
 # create preferred shared-folder location, instead of "/app"
 mkdir /srv/remix
@@ -65,13 +65,6 @@ sed -i s/127.0.0.1/0.0.0.0/g $HOME/.nvm/versions/node/v$NPM_VERSION/lib/node_mod
 # "entry point" file is roughly as follows; main difference is that
 # original file had "/app" as the shared-folder ["/srv/remix"] 
 #
-
-# set up environment
-export NVM_DIR="$HOME/.nvm"
-
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 nvm use $NPM_VERSION
 
