@@ -29,4 +29,4 @@ Add service to systemd to start on reboot; "systemd" is for Ubuntu, Debian, and 
 Reboot to confirm.
 
 
-Next up is to [proxy serve remix-ide](./remix-ide-apache2-proxy.md) through Apache2.
+Next up is to [proxy serve remix-ide](./remix-ide-installation-apache2-proxy.md) through Apache2.
