@@ -18,11 +18,11 @@ Install the pre-installation package dependencies if needed.
 
 	$ sudo apt install -y curl openssh-server ca-certificates
 
-Install postfix for email notifications or configure for use with another mail server. This isn't as complex as I feared, since it isn't a complete mail system.
+Install postfix for email notifications or configure for use with another mail server. This isn't as complex as I feared, since it isn't a complete mail system. Answer "internet site," your domain name, and that was it for me; all else was automatic or default values.
+
 
 	$ sudo apt install -y postfix postfix-doc
 
-	answer "internet site," your domain name, and that was it for me; all else was automatic or default values
 
 Get and run the installation setup script for your particular Linux distribution.
 
