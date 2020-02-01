@@ -6,7 +6,7 @@ This installation is on a fresh install of Ubuntu 18.04 mini. It also works on U
 
 Add necessary packages:
 
-	$ sudo apt install openssh-server python curl build-essential git
+	$ sudo apt install python curl build-essential git
 
 Create user account for remix with login disabled:
 
