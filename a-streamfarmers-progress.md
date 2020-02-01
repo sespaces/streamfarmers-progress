@@ -10,12 +10,19 @@
 
 ##### Week 5
 
-[Remix-IDE -- Round 1](./remix-ide-part-one.md)
+[Remix-IDE](https://github.com/sespaces/remix-ide-server-hosting/blob/master/README.md)
 
 	I had thought setting up my own Remix-IDE would be easier. I was mistaken about how much I didn't know about NodeJS. I learned a few things and got it working nicely, however.
 
-	In this round, lasting a couple of days, I adapted the commands in a Docker build file for use in a Bash shell. (./remix-ide-bash-installation-v1)
+#### February
 
-	Now that I have a working copy, I will begin again. This time I will attempt to make it more script-like and more useful in subsequent updates. I'll also be using the latest stable version of Remix.
+##### Week 1
 
+[Gitlab Server Setup](./gitlab-installation-ubuntu-18-04.md)
+
+	This was as easy as I imagined. But almost not so. For a while I thought I would have to go throught the long and uncertain process of building it from source. (It has a *lot* of dependencies.)
+
+	Essentially, just use the installer instructions for your system (even if it's a raspberry-pi) from Gitlab's [Install](https://about.gitlab.com/install/) page.
+
+	It even takes care of getting Let's Encrypt certificates.
 
