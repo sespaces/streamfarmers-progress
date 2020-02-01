@@ -8,8 +8,12 @@ The current focus is on installing and running Remix, a browser-based IDE for Et
 
 [A Streamfarmer's Progress](./a-streamfarmers-progress.md)
 
-[Remix IDE -- part 1](./remix-ide-part-one.md)
+[Installing Remix on Ubuntu 18.04](./remix-ide-installation-ubuntu-18.md)
+[Using pm2 to Control Remix](./remix-ide-installation-pm2-startup-service.md)
+[Apache2 Proxy Remix ](./remix-ide-installation-apache2-proxy.md)
+[Remix SSL with Let's Encrypt](./remix-ide-installation-lets-encrypt-ssl.md)
+[Password Protecting Remix-IDE](./remix-ide-installation-auth-password.md)
 
-[Remix IDE -- Installation Script for Ubuntu -- v1](./remix-ide-bash-installation-v1.md)
+[Remix mixups](./remix-ide-part-one.md)
 
-[Bash script? Env PATH!](./scripting-fail-success.md) 
+[Useful Ubuntu repositories](./additional-ubuntu-repositories.md)
