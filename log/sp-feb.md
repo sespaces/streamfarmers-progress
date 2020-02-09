@@ -60,3 +60,8 @@ Several days getting educated about Linux system administration and about Jupyte
 
 - sudo, EH?
 
+
+#### [Day 2](./sp-feb-09.md)
+
+- [Add Julia kernel to Jupyter Hub](../jupyter/add-julia-kernel-to-jupyterhub.md)
+

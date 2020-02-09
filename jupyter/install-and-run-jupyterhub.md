@@ -264,7 +264,8 @@ Run certbot. It will generate and install certificates and update Apache2's .con
 	$ sudo certbot --apache -m hubber@example.com -d jupyter.example.com
 
 
-###### Switching 
+###### Enabling SSL
+
 Edit the apache conf file so that it runs as https only, optionally with permanent redirection.
 
 <VirtualHost *:80>
