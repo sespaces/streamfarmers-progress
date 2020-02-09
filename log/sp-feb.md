@@ -56,7 +56,7 @@ Several days getting educated about Linux system administration and about Jupyte
 
 #### [Day 1](./sp-feb-08.md)
 
-- [JupyterHub installation writeup](./jupyter/install-and-run-jupyterhub.md)
+- [JupyterHub installation writeup](../jupyter/install-and-run-jupyterhub.md)
 
 - sudo, EH?
 
