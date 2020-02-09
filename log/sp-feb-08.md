@@ -27,8 +27,38 @@ I'd like also to install the Julia kernel for JupyterHub and to document that pr
 
 - 8:30am
 
+editing streamgardener's progress files while extracting portions for writing how-to
+
+- 9:00am
+away
+- 11:00am
+
+organize repo and commmit current work
+
+- 11:15am
+
+writing "install-and-run-jupyterhub.md"
+
+- 1:00pm
+away
+- 4:30pm
+
+writing "install-and-run-jupyterhub.md"
 
 
+The following snippet came from some failed attempt, but I cannot locate the guide I got it from..
+
+Seems it may help when I move on to installing Julia kernel.
+
+
+	Once users log in, they can create their own new environments using ipykernel using this command in their own bash shells:
+
+		$ /opt/conda/envs/python/bin/python -m ipykernel install --name 'my-py-env' --display-name "My Python Env"
+
+### Install Julia kernel.
+
+
+- 6:00pm
 
 
 
